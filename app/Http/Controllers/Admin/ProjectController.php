@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
+use Illuminate\Support\Facades\Storage;
 class ProjectController extends Controller
 {
     /**
@@ -34,9 +36,18 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
     
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
-        //
+        $data = $request->validated();
+        $slug = Project::generateSlug($request->name_project);
+        $data['slug'] = $slug;
+        // if($request->hasFile('cover_image')){
+        //     $path = Storage::disk('public')->put('post_images', $request->cover_image);
+        //     $data['cover_image'] = $path;
+        // }
+
+        $new_project = Project::create($data);
+        return redirect()->route('admin.projects.show', $new_project->slug);
     }
 
     /**
@@ -45,9 +56,9 @@ class ProjectController extends Controller
      * @param  int  $id
    
      */
-    public function show($id)
+    public function show(Project $project)
     {
-        return view('admin.projects.show');
+        return view('admin.projects.show', compact('project'));
     }
 
     /**
@@ -56,9 +67,9 @@ class ProjectController extends Controller
      * @param  int  $id
      
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-        return view('admin.projects.edit');
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -68,19 +79,23 @@ class ProjectController extends Controller
      * @param  int  $id
      
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        $data = $request->validated();
+        $slug = Project::generateSlug($request->name_project);
+        $data['slug'] = $slug;
+        $project->update($data);
+        return redirect()->route('admin.projects.index')->with('message', "$project->name_project updated successfully");
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('admin.projects.index')->with('message', "$project->name_project deleted successfully");
     }
 }
