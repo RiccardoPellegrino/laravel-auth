@@ -13,6 +13,7 @@
             <div>{{$project->team}}</div>
             <div>{{$project->link_git}}</div>
             <div>{{$project->description}}</div>
+            <img src="{{asset('storage/' . $project->cover_image)}}" alt="">
             <button class="btn btn-primary mt-3"><a href="{{route('admin.projects.index')}}"style="color:white">Indietro</a></button>
         </div>
     </div>

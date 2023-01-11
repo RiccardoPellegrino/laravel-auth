@@ -52,8 +52,16 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                       </div>
+                      <div class="mb-3">
+                        <label for="cover_image" class="form-label">Immagine</label>
+                        <input type="file" name="cover_image" id="cover_image" class="form-control  @error('cover_image') is-invalid @enderror" >
+                        @error('cover_image')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                      </div>
                       <button type="submit" class="btn btn-success">Submit</button>
                       <button type="reset" class="btn btn-primary">Reset</button>
+                      <button class="btn btn-primary"><a href="{{route('admin.projects.index')}}"style="color:white">Indietro</a></button>
                 </form>
             </div>
         </div>
