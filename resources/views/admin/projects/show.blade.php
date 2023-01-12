@@ -15,7 +15,7 @@
             <div>{{$project->link_git}}</div>
             <div>{{$project->description}}</div>
           
-            <button class="btn btn-primary mt-3"><a href="{{route('admin.projects.index')}}"style="color:white">Indietro</a></button>
+            <button class="btn btn-primary mt-3"><a href="{{route('admin.projects.index')}}" class="text-white">Indietro</a></button>
         </div>
     </div>
 </div>
