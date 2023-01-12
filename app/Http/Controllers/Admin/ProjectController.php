@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Type;
 class ProjectController extends Controller
 {
     /**
