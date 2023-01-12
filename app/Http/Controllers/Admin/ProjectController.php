@@ -18,7 +18,9 @@ class ProjectController extends Controller
     public function index()
     {
         $projects =Project::all();
-        return view('admin.projects.index',compact('projects'));
+        $types = Type::all();
+        
+        return view('admin.projects.index',compact('projects','types'));
     }
 
     /**
@@ -28,7 +30,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+        return view('admin.projects.create',compact('types'));
     }
 
     /**
@@ -59,7 +62,8 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return view('admin.projects.show', compact('project'));
+        $types = Type::all();
+        return view('admin.projects.show', compact('project','types'));
     }
 
     /**
@@ -70,7 +74,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::all();
+        return view('admin.projects.edit', compact('project','types'));
     }
 
     /**

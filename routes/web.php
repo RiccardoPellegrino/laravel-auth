@@ -34,7 +34,7 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')
          Route::get('/', [DashboardController::class, 'index'])
          ->name('dashboard');
          Route::resource('projects',ProjectController::class)->parameters(['projects'=>'project:slug']);
-         Route::resource('types',TypeController::class)->parameters(['typse'=>'type:slug']);
+         Route::resource('types',TypeController::class)->parameters(['types'=>'type:slug']);
    });
 
 require __DIR__.'/auth.php';

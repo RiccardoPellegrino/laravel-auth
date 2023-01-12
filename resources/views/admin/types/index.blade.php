@@ -1,8 +1,7 @@
 @extends('layouts.admin')
-
 @section('content')
-    <h1>Project</h1>
-    <a class="btn btn-success" href="{{ route('admin.projects.create') }}">Crea nuovo progetto</a>
+    <h1>Type</h1>
+    <a class="btn btn-success" href="{{ route('admin.types.create') }}">Crea nuovo tipo</a>
     @if (session()->has('message'))
         <div class="alert alert-success mb-3 mt-3">
             {{ session()->get('message') }}
@@ -13,38 +12,25 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nome Progetto</th>
-                    <th scope="col">Descrizione</th>
-                    <th scope="col">Linguaggi</th>
-                    <th scope="col">Framework</th>
-                    <th scope="col">Team</th>
-                    <th scope="col">Link Git</th>
-                    <th scope="col">Difficolta</th>
+                    <th scope="col">Nome Tipo</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($projects as $project)
+                @foreach ($types as $type)
                     <tr>
-                        <th scope="row">{{ $project->id }}</th>
-                        <td><a href="{{ route('admin.projects.show', $project->slug) }}"
-                                title="View Post">{{ $project->name_project }}</a></td>
-                        <td>{{ Str::limit($project->description, 100) }}</td>
-                        <td>{{ $project->dev_lang }}</td>
-                        <td>{{ $project->framework }}</td>
-                        <td>{{ $project->team }}</td>
-                        <td>{{ $project->link_git }}</td>
-                        <td>{{ $project->lvl_diff }}</td>
-                        <td><a class="link-secondary" href="{{ route('admin.projects.edit', $project->slug) }}"
+                        <th scope="row">{{ $type->id }}</th>
+                        <td><a href="{{ route('admin.types.show', $type->slug) }}"
+                                title="View Post">{{ $type->workflow }}</a></td>
+                        <td><a class="link-secondary" href="{{ route('admin.types.edit', $type->slug) }}"
                                 title="Edit Post"><i class="fa-solid fa-pen"></i></a></td>
                         <td>
-                            <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST">
+                            <form action="{{ route('admin.types.destroy', $type->slug) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="delete-button btn btn-danger ms-3"
-                                    data-item-title="{{ $project->name_project }}"><i
-                                        class="fa-solid fa-trash-can"></i></button>
+                                    data-item-title="{{ $type->workflow }}"><i class="fa-solid fa-trash-can"></i></button>
                             </form>
                         </td>
                     </tr>

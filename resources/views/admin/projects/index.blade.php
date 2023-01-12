@@ -20,6 +20,7 @@
                     <th scope="col">Team</th>
                     <th scope="col">Link Git</th>
                     <th scope="col">Difficolta</th>
+                    <th scope="col">Tipo</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
@@ -36,6 +37,11 @@
                         <td>{{ $project->team }}</td>
                         <td>{{ $project->link_git }}</td>
                         <td>{{ $project->lvl_diff }}</td>
+                        @foreach($types as $type)
+                        @if ($type->id === $project->workflow_id)
+                            <td>{{ $type->workflow }}</td>
+                            @endif
+                        @endforeach              
                         <td><a class="link-secondary" href="{{ route('admin.projects.edit', $project->slug) }}"
                                 title="Edit Post"><i class="fa-solid fa-pen"></i></a></td>
                         <td>
