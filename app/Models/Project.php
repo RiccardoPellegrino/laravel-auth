@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Project extends Model
 {
     use HasFactory;
@@ -13,5 +14,8 @@ class Project extends Model
     public static function generateSlug($name_project)
     {
         return Str::slug($name_project, '-');
+    }
+    public function types():BelongsTo{
+        return $this->belongsTo(Type::class);
     }
 }
