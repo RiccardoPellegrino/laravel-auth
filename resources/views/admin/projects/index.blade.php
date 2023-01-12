@@ -31,14 +31,14 @@
                         <th scope="row">{{ $project->id }}</th>
                         <td><a href="{{ route('admin.projects.show', $project->slug) }}"
                                 title="View Post">{{ $project->name_project }}</a></td>
-                        <td>{{ Str::limit($project->description, 100) }}</td>
+                        <td>{{ Str::limit($project->description, 50) }}</td>
                         <td>{{ $project->dev_lang }}</td>
                         <td>{{ $project->framework }}</td>
                         <td>{{ $project->team }}</td>
                         <td>{{ $project->link_git }}</td>
                         <td>{{ $project->lvl_diff }}</td>
                         @foreach($types as $type)
-                        @if ($type->id === $project->workflow_id)
+                        @if ($type->id === $project->type_id)
                             <td>{{ $type->workflow }}</td>
                             @endif
                         @endforeach              
