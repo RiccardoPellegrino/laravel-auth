@@ -9,7 +9,7 @@
             <h1>{{$project->name_project}}</h1>
             <div>{{$project->lvl_diff}}</div>
             <div>{{$project->slug}}</a></div>
-            <div>{{$project->dev_lang}}</div>
+            {{-- <div>{{$project->dev_lang}}</div> --}}
             <div>{{$project->framework}}</div>
             <div>{{$project->team}}</div>
             <div>{{$project->link_git}}</div>
