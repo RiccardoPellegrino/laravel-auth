@@ -72,6 +72,19 @@
                         @error('cover_image')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
+                        {{-- workflow type --}}
+                      <div class="mb-3">
+                        <label for="type_id" class="form-label">Seleziona workflow</label>
+                        <select name="type_id" id="type_id" class="form-control @error('type_id') is-invalid @enderror">
+                          <option value="">Seleziona workflow</option>
+                          @foreach ($types as $type)
+                              <option value="{{$type->id}}" {{ $type->id == old('type_id') ? 'selected' : '' }}>{{$type->workflow}}</option>
+                          @endforeach
+                        </select>
+                        @error('type_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                      </div>
                         <div class="mt-3">
                           <button type="submit" class="btn btn-success">Submit</button>
                           <button type="reset" class="btn btn-primary">Reset</button>

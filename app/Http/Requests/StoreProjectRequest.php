@@ -32,7 +32,7 @@ class StoreProjectRequest extends FormRequest
             'link_git'=> 'nullable',
             'lvl_diff' => 'nullable',
             'cover_image' => 'nullable|image|max: 250',
-            'type_id'=>'required|exist:types,id'
+            'type_id'=>'required|exists:types,id'
                 ];
     }
     public function messages(){
