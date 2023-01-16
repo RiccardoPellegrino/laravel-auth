@@ -16,7 +16,7 @@
           </button>
 
           <!-- Brand -->
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="/">
             <img
               src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
               height="25"
