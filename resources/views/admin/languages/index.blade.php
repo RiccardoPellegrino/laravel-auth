@@ -2,15 +2,31 @@
 
 @section('content')
     <h1>Language</h1>
-    <div class="text-end">
+    {{-- <div class="text-end">
         <a class="btn btn-success" href="">Crea nuovo Language</a>
-    </div>
+    </div> --}}
 
     @if(session()->has('message'))
     <div class="alert alert-success mb-3 mt-3">
         {{ session()->get('message') }}
     </div>
     @endif
+    <form action="{{ route('admin.languages.store') }}" method="POST" class="d-flex align-items-center mb-4">
+        @csrf
+            <h1 class="text-center fs-2 mb-3">Aggiungi un Linguaggio</h1>
+            <div class="mx-5 px-5">
+                <label for="name">Nome</label>
+                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" required maxlength="45">
+                @error('name')
+                    <div class="invalid-feedback">{{$message}}</div>
+                @enderror
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary" id="btn-submit">Crea</button>
+                <button type="reset" class="btn btn-danger" id="btn-reset">Pulisci</button>
+            </div>
+        </form>
+    
     <table class="table table-striped">
         <thead>
         <tr>
@@ -25,7 +41,11 @@
                 <tr>
                     <th scope="row">{{$language->id}}</th>
                     <td>
-                        {{$language->name}}
+                        <form action="{{route('admin.languages.update', $language->slug)}}" method="post">
+                            @csrf
+                            @method('PATCH')
+                            <input class="border-0 bg-transparent" type="text" name="name" value="{{$language->name}}">
+                        </form>
                     </td>
                     <td>
                         {{count($language->projects) > 0 ? count($language->projects)  : 0}}

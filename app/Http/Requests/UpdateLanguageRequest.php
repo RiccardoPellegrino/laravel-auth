@@ -13,7 +13,7 @@ class UpdateLanguageRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class UpdateLanguageRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['required',Rule::unique('languages')->ignore($this->language),'max:45']
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'name.required' => 'il nome è obbligatorio',
+            'name.unique' => 'il nome esiste già',
+            'name.max' => 'il nome non può superare i :max caratteri',
         ];
     }
 }

@@ -55,7 +55,7 @@ class ProjectController extends Controller
         if($request->has('languages')){
             $new_project->languages()->attach($request->languages);
         }
-        return redirect()->route('admin.projects.show', $new_project->slug);
+        return redirect()->route('admin.projects.index', $new_project->slug);
     }
 
     /**

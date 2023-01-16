@@ -75,7 +75,7 @@
             </li>
             <!-- Icon -->
             <li class="nav-item me-3 me-lg-0">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="https://github.com/RiccardoPellegrino">
                 <i class="fab fa-github"></i>
               </a>
             </li>
@@ -138,7 +138,7 @@
                 aria-expanded="false"
               >
                 <img
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp"
+                  src="https://avatars.githubusercontent.com/u/64532705?s=400&u=3521ee98229738971e694f34aeaa78f597526af8&v=4"
                   class="rounded-circle"
                   height="22"
                   alt="Avatar"
