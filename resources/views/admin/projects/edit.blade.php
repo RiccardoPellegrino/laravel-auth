@@ -85,6 +85,16 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                       </div>
+                      <div class="mb-3">
+                        <label for="languages" class="form-label">Linguaggi</label>
+                        @foreach ($languages as $language)
+                        <input type="checkbox" name="languages[]" value="{{$language->id}}">
+                        <span class="text-capitalize">{{$language->name}}</span>
+                        @endforeach
+                        {{-- @error('languages')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror --}}
+                      </div>
                         <div class="mt-3">
                           <button type="submit" class="btn btn-success">Submit</button>
                           <button type="reset" class="btn btn-primary">Reset</button>
