@@ -44,7 +44,7 @@
                         <form action="{{route('admin.languages.update', $language->slug)}}" method="post">
                             @csrf
                             @method('PATCH')
-                            <input class="border-0 bg-transparent" type="text" name="name" value="{{$language->name}}">
+                            <input class="border-0 bg-transparent text-capitalize" type="text" name="name" value="{{$language->name}}" style="cursor: pointer">
                         </form>
                     </td>
                     <td>

@@ -29,7 +29,7 @@
                 @foreach ($projects as $project)
                     <tr>
                         <th scope="row">{{ $project->id }}</th>
-                        <td><a href="{{ route('admin.projects.show', $project->slug) }}"
+                        <td><a class="text-capitalize" href="{{ route('admin.projects.show', $project->slug) }}"
                                 title="View Post">{{ $project->name_project }}</a></td>
                         <td>{{ Str::limit($project->description, 50) }}</td>
                         <td>

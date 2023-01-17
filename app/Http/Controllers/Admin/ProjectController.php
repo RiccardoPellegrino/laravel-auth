@@ -55,6 +55,7 @@ class ProjectController extends Controller
         if($request->has('languages')){
             $new_project->languages()->attach($request->languages);
         }
+        
         return redirect()->route('admin.projects.index', $new_project->slug);
     }
 
@@ -104,6 +105,11 @@ class ProjectController extends Controller
             $data['cover_image'] = $path;
         }
         $project->update($data);
+        if($request->has('languages')){
+            $project->languages()->sync($request->languages);
+        } else {
+            $project->languages()->sync([]);
+        }
         return redirect()->route('admin.projects.index')->with('message', "$project->name_project updated successfully");
     }
 
